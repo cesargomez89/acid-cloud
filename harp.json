@@ -1,0 +1,7 @@
+{
+  "globals": {
+    "title": "Acid Cloud",
+    "author"  : "Cesar Gomez",
+    "uri": "http://acidcloud.heroku.com"
+  }
+}
