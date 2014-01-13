@@ -1,9 +1,26 @@
 !!!
 html
   head
+    link(rel="stylesheet", href="/assets/css/semantic.css")
     link(rel="stylesheet", href="/assets/css/main.css")
 
+    script(src="http://connect.soundcloud.com/sdk.js")
     script(data-main="/assets/js/main.js", src="/assets/js/libs/require.js")
   title= title
   body
+    header
+      .ui.menu.inverted
+        a.active.item
+          i.home.icon
+          | Home
+        .right.menu
+          .item
+            .ui.icon.input
+              input(type='text', placeholder='Search...')
+              i.search.link.icon
+          .item
+            .ui.orange.button
+              i.cloud.icon
+              |Sign In
     != yield
+    footer
