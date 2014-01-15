@@ -21,12 +21,6 @@ require.config({
   }
 });
 
-define( ['marionette'], function (Marionette) {
-
-    var AcidCloud = new Marionette.Application();
-
-    // configuration, setting up regions, etc ...
-
-    // export the app from this module
-    return AcidCloud;
+require(['app'], function(App){
+  App.initialize();
 });
