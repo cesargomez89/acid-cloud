@@ -1,10 +1,13 @@
-define(['marionette'], function(Marionette){
+define(['marionette', 'models/session'], function(Marionette, Session){
   var SignInView = Marionette.View.extend({
+    el: 'header',
+
     initialize: function(){
       SC.initialize({
         client_id: '8d2b1d7c0001b646afda38787dd4bb28',
         redirect_uri: 'http://localhost.development:9000/signin'
       });
+      self.model = Session.initialize();
     },
 
     ui: {
@@ -16,7 +19,8 @@ define(['marionette'], function(Marionette){
       "click @ui.signin": function(){
         SC.connect(function() {
           SC.get('/me', function(me) { 
-            alert('Hello, ' + me.username); 
+            self.model.set(me);
+            debugger
           });
         });
       }
@@ -25,11 +29,10 @@ define(['marionette'], function(Marionette){
 
   });
 
-  function initialize(){
-    new SignInView();
-  }
-
-  return {
-    initialize: initialize
+  function initialize (){
+    return new SignInView;
   };
+
+  return { initialize: initialize }
+
 });

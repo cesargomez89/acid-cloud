@@ -1,4 +1,4 @@
-define(['marionette', 'views/signin_view'], function(Marionette, SignIn){
+define(['marionette', 'app'], function(Marionette, App){
 
   var Router = Marionette.AppRouter.extend({
 
@@ -6,23 +6,23 @@ define(['marionette', 'views/signin_view'], function(Marionette, SignIn){
     },
 
     routes: {
-      "": "home"
+      "home": "home",
+      "": "signin"
     },
 
     initialize: function(){},
 
-    home: function(){
-      this.signInView = SignIn.initialize();
-      console.log(this.signInView);
+    signin: function(){
+      return require(['views/signin_view'], function(Signin) {
+        return Signin.initialize();
+      });
     }
   });
 
   function initialize(){
-    var router = new Router();
-  }
-
-  return {
-    initialize: initialize
+    return new Router;
   };
+
+  return { initialize: initialize }
 
 });
