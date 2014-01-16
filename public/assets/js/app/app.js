@@ -4,9 +4,9 @@ define(['marionette'], function(Marionette) {
   App.Views = {},
   App.vars  = {};
   App.addRegions({
-    sidebarRegion: "#sdebar-region",
-    mainRegion: "#main-region",
-    footerRegion: "#footer-region",
+    sidebarRegion: "#sdebar",
+    mainRegion: "#main",
+    footerRegion: "footer",
     headerRegion: "header"
   });
   App.vent.on("routing:started", function() {
