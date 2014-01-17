@@ -1,2 +1,12 @@
-h1= title
-h3= author
+.main
+  .container
+    .ui.button#js-sidebar-button(data-variation= '.right')
+  .ui.sidebar.floating.right
+    h2.ui.header.inverted.block
+      i.list.layout.icon
+      .content
+        |Playlist
+    table.ui.inverted.table.segment#sidebar-list
+
+include templates/playlist_template
+include templates/song_template

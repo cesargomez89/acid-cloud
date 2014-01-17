@@ -1,6 +1,7 @@
 require.config({
   paths : {
     jquery : '/assets/js/libs/jquery',
+    semantic: '/assets/js/libs/semantic',
     underscore : '/assets/js/libs/underscore',
     backbone : '/assets/js/libs/backbone',
     localstorage: '/assets/js/libs/backbone.localstorage',
@@ -12,6 +13,7 @@ require.config({
     jquery : {
       exports : 'jQuery'
     },
+    semantic: ['jquery'],
     underscore : {
       exports : '_'
     },

@@ -14,7 +14,7 @@ define(['marionette'], function(Marionette){
       "click @ui.signin": function(){
         SC.connect(function() {
           SC.get('/me', function(me) { 
-            sessionStorage.seItem('session', JSON.stringify(me));
+            sessionStorage.setItem('session', JSON.stringify(me));
           });
           window.location.assign("/");
         });

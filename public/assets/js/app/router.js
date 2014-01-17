@@ -1,4 +1,13 @@
-define(['marionette', 'app', 'views/signin_view', 'views/home_view'], function(Marionette, App, Signin, Home){
+define(
+  [
+    'marionette',
+    'app',
+    'views/signin_view',
+    'views/songs_view',
+    'views/home_view',
+    'collections/songs'
+],
+function(Marionette, App, Signin, SongsView,Home, Songs){
 
   var Router = Marionette.AppRouter.extend({
 
@@ -15,17 +24,29 @@ define(['marionette', 'app', 'views/signin_view', 'views/home_view'], function(M
         client_id: '8d2b1d7c0001b646afda38787dd4bb28',
         redirect_uri: 'http://localhost.development:9000/signin'
       });
-      if (!sessionStorage.key('session')){
+      if (!sessionStorage.key('session') && window.location.pathname !== '/signin'){
         window.location.assign('/signin');
       }
     },
 
     signin: function(){
+      if (sessionStorage.key('session')){
+        window.location.assign('/');
+      }
+      else{
         return Signin.initialize();
+      }
     },
 
     home: function(){
-        return Home.initialize();
+      var session = JSON.parse(sessionStorage.session);
+      var songs ;
+      SC.get('/users/'+session.username+'/playlists', function(playlists) {
+        songs = Songs.initialize(playlists);
+        App.sidebarRegion.show(SongsView.initialize(songs));
+        App.mainRegion.show(Home.initialize());
+      });
+
     }
 
   });

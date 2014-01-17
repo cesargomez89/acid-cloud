@@ -4,7 +4,7 @@ define(['marionette'], function(Marionette) {
   App.Views = {},
   App.vars  = {};
   App.addRegions({
-    sidebarRegion: "#sdebar",
+    sidebarRegion: "#sidebar-list",
     mainRegion: "#main",
     footerRegion: "footer",
     headerRegion: "header"
