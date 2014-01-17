@@ -12,5 +12,11 @@ define(['marionette'], function(Marionette) {
   App.vent.on("routing:started", function() {
     Backbone.history.start({pushState: true, root: '/'});
   });
+
+  _.templateSettings = {
+    evaluate:    /\{\{#([\s\S]+?)\}\}/g,            // {{# console.log("blah") }}
+    interpolate: /\{\{[^#\{]([\s\S]+?)[^\}]\}\}/g,  // {{ title }}
+    escape:      /\{\{\{([\s\S]+?)\}\}\}/g,         // {{{ title }}}
+  };
   return App;
 });
